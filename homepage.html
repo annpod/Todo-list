@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html >
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />	
+	<meta name="Keywords" content="words" />
+	<meta name="Description" content="description" />
+	<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+	<link href="styles.css" type="text/css" rel="stylesheet" />
+
+
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+	<script src="js/engine.js" type="text/javascript"></script>
+	
+	
+	<title>Homepage</title>
+</head>
+
+<body >
+
+	<div class="basis" data-ng-app="todoApp" data-ng-controller="todoCtrl">
+
+		<h1>TODO list</h1>
+
+		<form data-ng-submit="todoAdd()">
+			<input type="text" data-ng-model="todoCaptionInput" size="50" placeholder="{{placeholder}}">
+			<input type="date" data-ng-model="todoDateInput">
+			<input type="submit" value="Add">
+		</form>
+		<a class="sort-date" href="" ng-click="sort('todoDateDeadline')">Sort Dedline Date
+			<i  aria-hidden="true"  ng-class="{'fa fa-angle-down' : isSortUp('todoDateDeadline'), 'fa fa-angle-up' : isSortDown('todoDateDeadline')}"></i>
+		</a>
+		<div class="list-item" data-ng-repeat="item in todoList | orderBy:'todoDateDeadline':reverse" ng-class="{outdated: isOutdated(item)}">
+			<input type="checkbox" data-ng-model="item.done"> 
+			<span data-ng-bind="item.todoCaption" class="done-{{item.done}} time-{{item.expired}}"></span>
+			(
+			Deadline: <span data-ng-bind="item.todoDateDeadline | date:'yyyy-MM-dd'"></span>
+			|
+			Added: <span data-ng-bind="item.todoDateAdded | date:'yyyy-MM-dd'"></span>			
+			)
+		</div>
+		<button class="remove-item" ng-click="removeItem()">Remove</button>
+
+	</div>
+
+</body>
+</html>

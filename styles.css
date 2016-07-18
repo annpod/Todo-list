@@ -1,0 +1,13 @@
+span.done-true{
+	 text-decoration: line-through;
+}
+.list-item{margin-bottom:5px;}
+form{margin-bottom:20px;}
+.sort-date{
+	margin-bottom:20px;
+	display: block;
+}
+
+button.remove-item{
+	margin-top:20px;
+}
