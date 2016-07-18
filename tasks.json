@@ -1,56 +1,86 @@
 [
 {
-"todoCaption": "task1",
-"todoDateAdded": "2016-07-10", 
-"todoDateDeadline": "2016-08-10",
+"caption": "task1",
+"createdDate": "14.07.2016", 
+"enspiredDate": "24.07.2016",
+"status": "assigned", 
 "done": false
 },
 {
-"todoCaption": "task2",
-"todoDateAdded": "2016-07-11", 
-"todoDateDeadline": "2016-06-30",
+"caption": "task2",
+"createdDate": "2016-10-10", 
+"enspiredDate": "2016-06-10",
+"status": "new", 
 "done": false
 },
 {
-"todoCaption": "task3",
-"todoDateAdded": "2016-07-10", 
-"todoDateDeadline": "2016-06-04",
-"done": true
-},
-{
-"todoCaption": "task4",
-"todoDateAdded": "2016-07-08", 
-"todoDateDeadline": "2016-08-05",
+"caption": "task3",
+"createdDate": "2016-06-10", 
+"enspiredDate": "2016-10-10",
+"status": "assigned", 
 "done": false
 },
 {
-"todoCaption": "task5",
-"todoDateAdded": "2016-07-08", 
-"todoDateDeadline": "2016-08-25",
+"caption": "task4",
+"createdDate": "2016-06-10", 
+"enspiredDate": "2016-07-10",
+"status": "assigned", 
 "done": false
 },
 {
-"todoCaption": "task6",
-"todoDateAdded": "2016-07-04", 
-"todoDateDeadline": "2016-09-15",
+"caption": "task44",
+"createdDate": "2016-06-10", 
+"enspiredDate": "2016-06-10",
+"status": "resolved", 
 "done": false
 },
 {
-"todoCaption": "task7",
-"todoDateAdded": "2016-07-04", 
-"todoDateDeadline": "2016-09-25",
+"caption": "task45",
+"createdDate": "2016-06-10", 
+"enspiredDate": "2016-08-10",
+"status": "new", 
 "done": false
 },
 {
-"todoCaption": "task8",
-"todoDateAdded": "2016-07-11", 
-"todoDateDeadline": "2016-08-10",
+"caption": "task46",
+"createdDate": "2016-06-10", 
+"enspiredDate": "2016-07-10",
+"status": "resolved", 
 "done": false
 },
 {
-"todoCaption": "task9",
-"todoDateAdded": "2016-07-11", 
-"todoDateDeadline": "2016-10-10",
+"caption": "task145",
+"createdDate": "2016-06-10", 
+"enspiredDate": "2016-09-10",
+"status": "new", 
+"done": false
+},
+{
+"caption": "task42",
+"createdDate": "2016-05-10", 
+"enspiredDate": "2016-06-10",
+"status": "new", 
+"done": false
+},
+{
+"caption": "task42",
+"createdDate": "2016-06-10", 
+"enspiredDate": "2016-07-30",
+"status": "new", 
+"done": false
+},
+{
+"caption": "task5",
+"createdDate": "2016-07-10", 
+"enspiredDate": "2016-09-10",
+"status": "resolved", 
+"done": false
+},
+{
+"caption": "task6",
+"createdDate": "2016-05-10", 
+"enspiredDate": "2016-08-10",
+"status": "new", 
 "done": false
 }
 ]

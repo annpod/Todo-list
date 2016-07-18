@@ -23,20 +23,20 @@
 		<h1>TODO list</h1>
 
 		<form data-ng-submit="todoAdd()">
-			<input type="text" data-ng-model="todoCaptionInput" size="50" placeholder="{{placeholder}}">
-			<input type="date" data-ng-model="todoDateInput">
+			<input type="text" data-ng-model="captionInput" size="50" placeholder="{{placeholder}}">
+			<input type="date" data-ng-model="dateInput">
 			<input type="submit" value="Add">
 		</form>
-		<a class="sort-date" href="" ng-click="sort('todoDateDeadline')">Sort Dedline Date
-			<i  aria-hidden="true"  ng-class="{'fa fa-angle-down' : isSortUp('todoDateDeadline'), 'fa fa-angle-up' : isSortDown('todoDateDeadline')}"></i>
+		<a class="sort-date" href="" ng-click="sort('enspiredDate')">Sort Dedline Date
+			<i  aria-hidden="true"  ng-class="{'fa fa-angle-down' : isSortUp('enspiredDate'), 'fa fa-angle-up' : isSortDown('enspiredDate')}"></i>
 		</a>
-		<div class="list-item" data-ng-repeat="item in todoList | orderBy:'todoDateDeadline':reverse" ng-class="{outdated: isOutdated(item)}">
+		<div class="list-item" data-ng-repeat="item in todoList | orderBy:'enspiredDate':reverse" ng-class="{outdated: isOutdated(item)}">
 			<input type="checkbox" data-ng-model="item.done"> 
-			<span data-ng-bind="item.todoCaption" class="done-{{item.done}} time-{{item.expired}}"></span>
+			<span data-ng-bind="item.caption" class="done-{{item.done}} "></span>
 			(
-			Deadline: <span data-ng-bind="item.todoDateDeadline | date:'yyyy-MM-dd'"></span>
+			Deadline: <span data-ng-bind="item.enspiredDate | date:'yyyy-MM-dd'"></span>
 			|
-			Added: <span data-ng-bind="item.todoDateAdded | date:'yyyy-MM-dd'"></span>			
+			Added: <span data-ng-bind="item.createdDate | date:'yyyy-MM-dd'"></span>			
 			)
 		</div>
 		<button class="remove-item" ng-click="removeItem()">Remove</button>

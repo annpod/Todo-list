@@ -12,19 +12,19 @@ app.controller("todoCtrl", function($scope, $http){
 	/*$scope.todoList = [];*/
 	$scope.placeholder = 'What TODO?';
 	$scope.todoAdd = function(){
-		if($scope.todoCaptionInput && $scope.todoDateInput){
+		if($scope.captionInput && $scope.dateInput){
 			$scope.todoList.push({
-				todoCaption:$scope.todoCaptionInput,
-				todoDateAdded: today,
-				todoDateDeadline:$scope.todoDateInput,
+				caption:$scope.captionInput,
+				createdDate: today,
+				enspiredDate:$scope.dateInput,
 				done: false
 			});
-			$scope.todoCaptionInput = '';
-			$scope.todoDateInput = '';
+			$scope.captionInput = '';
+			$scope.dateInput = '';
 		}
 	}
 	$scope.isOutdated = function(item) {
-		var date = 	new Date(item.todoDateDeadline);
+		var date = 	new Date(item.enspiredDate);
 		var currentDate = new Date();
 		return ((currentDate - date) > 0);
 	};
