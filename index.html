@@ -5,6 +5,7 @@
 	<meta name="Keywords" content="words" />
 	<meta name="Description" content="description" />
 	<link rel="icon" href="favicon.ico" type="image/ico" />
+	<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
 	<link href="styles.css" type="text/css" rel="stylesheet" />
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
 	<script src="js/todo.js" type="text/javascript"></script>
@@ -16,14 +17,17 @@
 	<div class="basis" ng-app="todoApp" ng-controller="todoCtrl">
 
 		<h1>TODO list</h1>
-
+<a href="" class="add-item" ng-click="todoAdd()">+</a>
 		<table>
 			<thead>
 				<tr>
 					<td>All</td>					
-					<td>Caption</td>
-					<td>Date Created</td>
-					<td>Date Enspired</td>
+					<td><a href="" ng-click="sort('caption')" >Caption <i  aria-hidden="true"  ng-class="{'fa fa-angle-down' : isSortUp('caption'), 'fa fa-angle-up' : isSortDown('caption')}"></i></a>
+						<span ng-show="fieldName === 'caption'"></span></td>
+
+					<td><a href="" ng-click="sort('createdDate')" >Date Created <i  aria-hidden="true"  ng-class="{'fa fa-angle-down' : isSortUp('createdDate'), 'fa fa-angle-up' : isSortDown('createdDate')}"></i></a></td>
+
+					<td><a href="" ng-click="sort('enspiredDate')" >Date Enspired <i  aria-hidden="true"  ng-class="{'fa fa-angle-down' : isSortUp('enspiredDate'), 'fa fa-angle-up' : isSortDown('enspiredDate')}"></i></a></td>
 					<td>Status</td>
 					<td>Edit</td>
 				</tr>
@@ -52,12 +56,12 @@
 					</td>
 					<td></td>
 				</tr>
-				<tr ng-repeat="item in todoList | filter:{caption:captionInput, createdDate:createdDateInput, enspiredDate:enspiredDateInput, status:status}"  ng-class="{outdated: isOutdated(item)}">
+				<tr ng-repeat="item in todoList | filter:{caption:captionInput, createdDate:createdDateInput, enspiredDate:enspiredDateInput, status:status} | orderBy:fieldName:reverse"  ng-class="{outdated: isOutdated(item)}">
 					<td><input type="checkbox" data-ng-model="item.done"> </td>
-					<td>{{item.caption}}</td>
-					<td>{{item.createdDate}}</td>
-					<td>{{item.enspiredDate}}</td>
-					<td>{{item.status}}</td>
+					<td><span data-ng-bind="item.caption" ></span></td>
+					<td><span data-ng-bind="item.createdDate" ></span></td>
+					<td><span data-ng-bind="item.enspiredDate" ></span></td>
+					<td><span data-ng-bind="item.status" ></span></td>
 					<td></td>
 				</tr>
 			</tbody>
