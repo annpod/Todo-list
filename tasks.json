@@ -3,84 +3,90 @@
 "caption": "task1",
 "createdDate": "2016-10-10", 
 "enspiredDate": "2016-06-10",
-"status": "assigned", 
+"status": 2, 
 "done": false
 },
 {
 "caption": "task2",
 "createdDate": "2016-10-10", 
 "enspiredDate": "2016-06-10",
-"status": "new", 
+"status": 1,
 "done": false
 },
 {
 "caption": "task3",
 "createdDate": "2016-06-10", 
 "enspiredDate": "2016-10-10",
-"status": "assigned", 
+"status":  1,
 "done": false
 },
 {
 "caption": "task4",
 "createdDate": "2016-06-10", 
 "enspiredDate": "2016-07-10",
-"status": "assigned", 
+"status": 2, 
 "done": false
 },
 {
 "caption": "task5",
 "createdDate": "2016-06-10", 
 "enspiredDate": "2016-06-10",
-"status": "resolved", 
+"status": 3, 
 "done": false
 },
 {
 "caption": "task6",
 "createdDate": "2016-06-10", 
 "enspiredDate": "2016-08-10",
-"status": "new", 
+"status": 1, 
 "done": false
 },
 {
 "caption": "task7",
 "createdDate": "2016-06-10", 
 "enspiredDate": "2016-07-10",
-"status": "resolved", 
+"status": 1, 
 "done": false
 },
 {
 "caption": "task8",
 "createdDate": "2016-06-10", 
 "enspiredDate": "2016-09-10",
-"status": "new", 
+"status": 2, 
 "done": false
 },
 {
 "caption": "task9",
 "createdDate": "2016-05-10", 
 "enspiredDate": "2016-06-10",
-"status": "new", 
+"status": 3, 
 "done": false
 },
 {
 "caption": "task10",
 "createdDate": "2016-06-10", 
 "enspiredDate": "2016-07-10",
-"status": "new", 
+"status": 1, 
 "done": false
 },
 {
 "caption": "task11",
 "createdDate": "2016-07-10", 
 "enspiredDate": "2016-09-10",
-"status": "resolved", 
+"status": 1, 
 "done": false
 },
 {
 "caption": "task12",
 "createdDate": "2016-05-10", 
 "enspiredDate": "2016-08-10",
-"status": "new", 
+"status": 1, 
+"done": false
+},
+{
+"caption": "task33",
+"createdDate": "2016-05-10", 
+"enspiredDate": "2016-08-10",
 "done": false
 }
 ]

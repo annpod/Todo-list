@@ -1,7 +1,8 @@
-var app = angular.module("todoApp", []);
-app.controller("todoCtrl", function($scope, $http){
+var app = angular.module("todoApp", ["xeditable"]);
+app.controller("todoCtrl", function($scope, $http, $filter){
 	$scope.fieldName = undefined;
 	$scope.reverse = false;
+	$scope.currentDate = new Date();
 
 	/*init data*/
 	$http.get('tasks.json').success(function(data, status, headers, config){
@@ -11,6 +12,19 @@ app.controller("todoCtrl", function($scope, $http){
 			alert('error data');
 		});
 	/**/
+	$scope.statuses = [
+	    {value: 1, text: 'new'},
+	    {value: 2, text: 'assigned'},
+	    {value: 3, text: 'resolved'}
+	];
+  $scope.showStatus = function(item) {
+    var selected = [];
+    if(item.status) {
+      selected = $filter('filter')($scope.statuses, {value: item.status});
+    }
+    return selected.length ? selected[0].text : 'Not set';
+  };
+
 
 /*out of date*/
 	$scope.isOutdated = function(item) {
@@ -32,10 +46,30 @@ app.controller("todoCtrl", function($scope, $http){
 		return $scope.fieldName === fieldName && $scope.reverse;
 	};
 
+/*create new task*/
+$scope.addTodo = function() {
+    $scope.inserted = {
+	    caption:"",
+		createdDate:"",
+		enspiredDate:"",
+		status: '',
+		done: false
+    };
+    $scope.todoList.push($scope.inserted);
+  };
+  /**/
 
+/*$scope.saveTodo = function() {
+    $scope.todoList.push({
+	    caption:$scope.caption,
+		createdDate:$scope.createdDate,
+		enspiredDate:$scope.enspiredDate,
+		status:$scope.status,
+		done: false
+    });
+  };*/
 
-
-
+/*edit item*/
 
 
 

@@ -4,10 +4,12 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />	
 	<meta name="Keywords" content="words" />
 	<meta name="Description" content="description" />
-	<link rel="icon" href="favicon.ico" type="image/ico" />
+	
 	<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
 	<link href="styles.css" type="text/css" rel="stylesheet" />
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+	<link href="Angular/angular-xeditable/css/xeditable.css" rel="stylesheet">
+	<script src="Angular/angular-xeditable/js/xeditable.js"></script>
 	<script src="js/todo.js" type="text/javascript"></script>
 	<title>TODO list</title>
 </head>
@@ -17,7 +19,7 @@
 	<div class="basis" ng-app="todoApp" ng-controller="todoCtrl">
 
 		<h1>TODO list</h1>
-<a href="" class="add-item" ng-click="todoAdd()">+</a>
+
 		<table>
 			<thead>
 				<tr>
@@ -47,25 +49,39 @@
 						<input type="text" data-ng-model="enspiredDateInput">
 					</td>
 					<td>
-						<select data-ng-model="status">
-							<option></option>
-							<option>new</option>
-							<option>assigned</option>
-							<option>resolved</option>
+						<select  name="status" ng-model="status"  ng-options="s.value as s.text for s in statuses "> 
+							<option value="{{s.text}}"></option>
 						</select>
 					</td>
 					<td></td>
 				</tr>
 				<tr ng-repeat="item in todoList | filter:{caption:captionInput, createdDate:createdDateInput, enspiredDate:enspiredDateInput, status:status} | orderBy:fieldName:reverse"  ng-class="{outdated: isOutdated(item)}">
 					<td><input type="checkbox" data-ng-model="item.done"> </td>
-					<td><span data-ng-bind="item.caption" ></span></td>
-					<td><span data-ng-bind="item.createdDate" ></span></td>
-					<td><span data-ng-bind="item.enspiredDate" ></span></td>
-					<td><span data-ng-bind="item.status" ></span></td>
-					<td></td>
+					<td><span editable-text="item.caption" e-name="caption" e-form="editrow" data-ng-bind="item.caption || empty" ></span></td>
+					<td><span editable-text="item.createdDate" e-name="createdDate" e-form="editrow" data-ng-bind="item.createdDate" ></span></td>
+					<td><span editable-text="item.enspiredDate" e-name="enspiredDate" e-form="editrow"  data-ng-bind="item.enspiredDate" ></span></td>
+					<!--<td><span editable-select="item.status" e-name="status" e-form="editrow" e-ng-options="s.id as s.text for s in statuses " data-ng-bind="item.status" ></span></td>-->
+					<td><span editable-select="item.status" e-name="status" e-form="editrow"  e-ng-options="s.value as s.text for s in statuses "> {{ showStatus(item) }}</span></td>
+					<!--<td><a href="" ng-click="editItem(item)"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>-->
+					<td>
+
+						<form editable-form name="editrow"  shown="inserted == item">
+							 <button type="button" class="btn" ng-click="editrow.$show()" ng-show="!editrow.$visible">
+						        edit
+						      </button>
+						      <button type="submit" class="btn"  ng-click="saveTodo()" ng-show="editrow.$visible">
+						        save
+						      </button>
+						</form>
+					</td>
 				</tr>
-			</tbody>
-		</table>
+				</tbody>
+			</table>
+			<table>
+				
+<button class="btn add-row" ng-click="addTodo()">Add row</button>
+
+<hr>
 
 	</div>
 
