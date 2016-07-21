@@ -1,4 +1,11 @@
-var app = angular.module("todoApp", ["xeditable"]);
+var app = angular.module("todoApp", ["xeditable","ui.bootstrap"]);
+/*filter for status*/
+/*app.filter('statusFilter', function(){
+	return function(input){		
+        return selected.length ? selected[0].text : 'Not set';   
+	}
+})*/ 
+
 app.controller("todoCtrl", function($scope, $http, $filter){
 	$scope.fieldName = undefined;
 	$scope.reverse = false;
@@ -12,19 +19,19 @@ app.controller("todoCtrl", function($scope, $http, $filter){
 			alert('error data');
 		});
 	/**/
+
 	$scope.statuses = [
 	    {value: 1, text: 'new'},
 	    {value: 2, text: 'assigned'},
-	    {value: 3, text: 'resolved'}
+	    {value: 3, text: 'resolved'},
 	];
   $scope.showStatus = function(item) {
     var selected = [];
     if(item.status) {
       selected = $filter('filter')($scope.statuses, {value: item.status});
     }
-    return selected.length ? selected[0].text : 'Not set';
+    return selected.length ? selected[0].text : 'Not set';   
   };
-
 
 /*out of date*/
 	$scope.isOutdated = function(item) {
