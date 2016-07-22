@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html >
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />	
+	<meta name="Keywords" content="words" />
+	<meta name="Description" content="description" />
+	<script type="text/javascript" src="jquery-1.11.2.min.js"></script>
+	<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+	<link href="styles.css" type="text/css" rel="stylesheet" />
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+	<link href="Angular/angular-xeditable/css/xeditable.css" rel="stylesheet">
+	<script src="Angular/angular-xeditable/js/xeditable.js" type="text/javascript"></script>
+	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<script src="js/ui-bootstrap-tpls-2.0.0.min.js" type="text/javascript"></script>
+	<script src="js/editable.js" type="text/javascript"></script>
+	<title>TODO list</title>
+</head>
+
+<body>
+
+	<div class="basis" ng-app="todoApp" ng-controller="todoCtrl">
+
+		<h1>TODO list</h1>
+
+		<table>
+			<thead>
+				<tr>
+					<td>All</td>					
+					<td><a href="" ng-click="sort('caption')" >Caption <i  aria-hidden="true"  ng-class="{'fa fa-angle-down' : isSortUp('caption'), 'fa fa-angle-up' : isSortDown('caption')}"></i></a>
+						<span ng-show="fieldName === 'caption'"></span></td>
+
+					<td><a href="" ng-click="sort('createdDate')" >Date Created <i  aria-hidden="true"  ng-class="{'fa fa-angle-down' : isSortUp('createdDate'), 'fa fa-angle-up' : isSortDown('createdDate')}"></i></a></td>
+
+					<td><a href="" ng-click="sort('enspiredDate')" >Date Enspired <i  aria-hidden="true"  ng-class="{'fa fa-angle-down' : isSortUp('enspiredDate'), 'fa fa-angle-up' : isSortDown('enspiredDate')}"></i></a></td>
+					<td>Status</td>
+					<td>Edit</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class="filters">
+					<td>
+						<input type="checkbox" data-ng-model="item.done"> 
+					</td>					
+					<td>
+						<input type="text" data-ng-model="captionInput" size="50" placeholder="text">
+					</td>
+					<td>
+						<input type="text"  data-ng-model="createdDateInput">
+					</td>
+					<td>
+						<input type="text" class="datepicker" data-ng-model="enspiredDateInput" >
+					</td>
+					<td>
+						<select  name="status" ng-model="status"  ng-options="s.value as s.text for s in statuses "> 
+							<option  value="">all</option>
+						</select>
+					
+					</td>
+					<td></td>
+				</tr>
+			
+				<tr ng-repeat="item in todoList" ng-include="getTemplate(item)" >
+				
+					
+				</tr>
+				</tbody>
+			</table>
+
+			 <script type="text/ng-template" id="display">
+		        <td><input type="checkbox" data-ng-model="item.done"> </td>
+					<td><span  data-ng-bind="item.caption" ></span></td>
+					<td><span  data-ng-bind="item.createdDate" ></span></td>
+					<td><span  data-ng-bind="item.enspiredDate" ></span></td>
+					<td><span > {{ showStatus(item)}}</span></td>
+					<td><a href="" ng-click="editItem(item)"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
+					
+		    </script>
+		    <script type="text/ng-template" id="edit">
+		       <td><input type="checkbox" data-ng-model="item.done"> </td>
+					<td><span  data-ng-bind="item.caption" ></span></td>
+					<td><span  data-ng-bind="item.createdDate" ></span></td>
+					<td><span  data-ng-bind="item.enspiredDate" ></span></td>
+					<td><span > {{ showStatus(item)}}</span></td>
+					<td><a href="" ng-click="saveItem(item)">save</a>				
+		          		<a href="" ng-click="cancelItem(item)">cancel</a>
+		        	</td>
+		    </script>
+				
+	<button class="btn add-row" ng-click="addTodo()" >Add row</button>
+
+	<hr>
+
+
+
+	</div>
+	
+</body>
+</html>
